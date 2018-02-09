@@ -11,19 +11,32 @@
 
     <div id="todo-wrapper"> 
         
-        
-        <!-- Text + Input field goes first -->
-        
+        <div id="input-container">
+            <h1>Todos</h1>
+            <form>
+                <input type="text" name="task" id="task" placeholder="Ex. Buy halloumi">
+                <input type="submit" value="Add to list"> 
+            </form>
 
-        
-        <!-- List of current tasks -->
-        
+            <div id="action-message-container">
+                <!-- Potential sucess or error message goes here -->
+            </div>
+        </div>
 
+        <div id="task-container-incomplete">
+            <h2>To be completed:</h2>
+            <ul id="incomplete">
+                <!-- List of current tasks -->    
+            </ul>
+        </div>
         
-        <!-- List of completed tasks -->
+        <div id="task-container-complete">
+            <h2>Done:</h2>
+            <ul id="complete">
+                <!-- List of completed tasks -->
+            </ul>
+        </div>
         
-        
-
     </div> <!--./todo-wrapper -->
     
     <script src="main.js"></script>
