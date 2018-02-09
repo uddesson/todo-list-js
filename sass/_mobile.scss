@@ -9,3 +9,28 @@ body{
     width: 80vw;
     height: 90vh;
 }
+
+#input-container{
+    background-color: salmon;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 30px;
+    margin: 0 auto 0 auto;
+}
+
+#task-container-complete, #task-container-incomplete{
+    width: 90%;
+}
+
+#task-container-incomplete{
+    margin: 10px auto 10px auto;
+    padding: 10px;
+    border: 1px solid green;
+}
+
+
+#task-container-complete{
+    margin: 10px auto 10px auto;
+    padding: 10px;
+    border: 1px solid grey;
+}
