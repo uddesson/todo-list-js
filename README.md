@@ -1,4 +1,9 @@
 # Todo
 
-First learning experience in JavaScript. 
-- Emma Uddesson
+Learning experience in JavaScript. 
+
+### Built With
+
+* SASS
+
+Emma Uddesson
