@@ -1,12 +1,10 @@
 //Fetches our two ul-elements from the DOM, used for output
-const inCompleteTasks = document.getElementById('incomplete'); //Should contain list of incomplete tasks
-const completedTasks = document.getElementById('complete'); //Should contain list of complete tasks
+const incompleteList = document.getElementById('incomplete'); //Should contain list of incomplete tasks
+const completeList = document.getElementById('complete'); //Should contain list of complete tasks
 
 
 //Fetches the main input field
-const task = document.getElementById('task'); 
-//Assigns the value (the actual task) to const newTask
-const newTask = task.value;
+const todo = document.getElementById('todo'); 
 
 //Fetching our add-button from the document
 const addButton = document.getElementById('addButton');
@@ -19,7 +17,7 @@ removeButton.id = "removeButton";
 //--- Function drafts
 
 /*
-addTask() 
+addTodo() 
 Adds the input value (string) as a list-element in ul of incomplete tasks
 .. when you click the addButton
 Also needs a checkbox and a remove-button added to the specific task ..? 
