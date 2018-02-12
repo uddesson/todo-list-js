@@ -18,19 +18,12 @@ body{
     margin: 0 auto 0 auto;
 }
 
-#task-container-complete, #task-container-incomplete{
+.task-container{
     width: 90%;
-}
-
-#task-container-incomplete, #task-container-complete, #clear-action-container{
-    margin: 10px auto 10px auto;
-    padding: 10px;
-}
-
-#task-container-incomplete{
     border: 1px solid green;
 }
 
-#task-container-complete{
-    border: 1px solid grey;
+.task-container, #clear-action-container{
+    margin: 10px auto 10px auto;
+    padding: 10px;
 }
