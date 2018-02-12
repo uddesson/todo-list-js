@@ -11,6 +11,11 @@ const newTask = task.value;
 //Fetching our add-button from the document
 const addButton = document.getElementById('addButton');
 
+//Creates new input element, to be used as removeButton
+const removeButton = document.createElement('input'); 
+removeButton.type = "submit";
+removeButton.value = "Delete";
+removeButton.id = "removeButton";
 //--- Function drafts
 
 /*
