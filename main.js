@@ -14,6 +14,7 @@ const removeButton = document.createElement('input');
 removeButton.type = "submit";
 removeButton.value = "Delete";
 removeButton.id = "removeButton";
+addButton.addEventListener('click', addTodo); //The function addTodo runs when button is clicked
 //--- Function drafts
 
 /*
@@ -23,6 +24,21 @@ Adds the input value (string) as a list-element in ul of incomplete tasks
 Also needs a checkbox and a remove-button added to the specific task ..? 
 */
 
+//Creates function
+function addTodo(event){
+    //Stop form from resending on sumbit
+    event.preventDefault(); 
+
+    //Create li-element to put the todo in
+    const listItem = document.createElement('li');
+    
+    //The listitem gets the value of the new todo
+    listItem.innerHTML = todo.value;
+
+    //Append listitem to list
+    incompleteList.appendChild(listItem);
+
+}
 /* 
 removeTask()
 Removes the listed task itself (this) completely
