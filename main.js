@@ -4,7 +4,7 @@ const completeList = document.getElementById('complete'); //Should contain list 
 
 
 //Fetches the main input field
-const todo = document.getElementById('todo'); 
+const todoInput = document.getElementById('todo'); 
 
 //Fetching our add-button from the document
 const addButton = document.getElementById('addButton');
