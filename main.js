@@ -11,8 +11,6 @@ const todoInput = document
 const addButton = document
     .getElementById('addButton');
 
-//Fetching our add-button from the document
-const addButton = document.getElementById('addButton');
 
 //Creates new input element, to be used as removeButton
 const removeButton = document.createElement('input'); 
