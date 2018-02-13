@@ -51,6 +51,24 @@ function addToList(event){
 }
 
 
+//--- Function drafts
+
+
+ function setComplete(){
+
+    //Loop through the list and check for event
+    for (listItem in incompleteList){ //OBS applied to incompleteList but completeList will hade checkbox too...
+
+        checkbox.addEventListener('click', function(){
+        
+            completeList.appendChild(this.parentElement);
+            
+        })
+    }
+
+    //Fix: Works only once. Gets error "checkbox.addEventListener is not a function 
+    //at markAsComplete (main.js:92) at HTMLInputElement.addToList"
+
 }
 
 /* 
