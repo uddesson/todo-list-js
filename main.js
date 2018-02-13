@@ -19,6 +19,8 @@ removeButton.value = "Delete";
 removeButton.id = "removeButton";
 addButton.addEventListener('click', addTodo); //The function addTodo runs when button is clicked
 //--- Function drafts
+addButton.addEventListener('click', addToList); //The function runs when button is clicked
+
 
 /*
 addTodo() 
