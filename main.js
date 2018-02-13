@@ -71,6 +71,16 @@ function addToList(event){
 
 }
 
+function remove(){
+    for (listItem in incompleteList){
+        
+        incompleteList.addEventListener('click', function(){
+        
+            this.parentElement.remove(); //Remove your parent button - and yourself!! 
+            
+        })
+    }
+}
 /* 
 clearTasks()
 Clears (removes) all your tasks - from both lists
