@@ -1,10 +1,15 @@
-//Fetches our two ul-elements from the DOM, used for output
-const incompleteList = document.getElementById('incomplete'); //Should contain list of incomplete tasks
-const completeList = document.getElementById('complete'); //Should contain list of complete tasks
+//Fetches our two ul-elements from the document, to be used for output
+const incompleteList = document
+    .getElementById('incomplete'); //Will contain list of incomplete tasks
+const completeList = document
+    .getElementById('complete'); //Will contain list of complete tasks
 
 
-//Fetches the main input field
-const todoInput = document.getElementById('todo'); 
+//Fetches the main input field and button from the document
+const todoInput = document
+    .getElementById('todo'); 
+const addButton = document
+    .getElementById('addButton');
 
 //Fetching our add-button from the document
 const addButton = document.getElementById('addButton');
