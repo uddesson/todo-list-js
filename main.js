@@ -48,10 +48,17 @@ function addToList(event){
     //Add the listitem (li) to the list (ul)
     incompleteList.appendChild(listItem);
     
+    
+    setComplete(); //Move task to complete list when checkbox is clicked
+
+    remove(); //Remove task when remove button is clicked
+
 }
 
 
 //--- Function drafts
+
+//Fix: Eventlistener works only once. Gets error "checkbox.addEventListener is not a function 
 
 
  function setComplete(){
@@ -65,22 +72,21 @@ function addToList(event){
             
         })
     }
-
-    //Fix: Works only once. Gets error "checkbox.addEventListener is not a function 
-    //at markAsComplete (main.js:92) at HTMLInputElement.addToList"
-
+  
 }
 
 function remove(){
     for (listItem in incompleteList){
         
-        incompleteList.addEventListener('click', function(){
+        removeButton.addEventListener('click', function(){
         
             this.parentElement.remove(); //Remove your parent button - and yourself!! 
             
         })
     }
 }
+
+
 /* 
 clearTasks()
 Clears (removes) all your tasks - from both lists
