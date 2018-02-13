@@ -12,22 +12,9 @@ const addButton = document
     .getElementById('addButton');
 
 
-//Creates new input element, to be used as removeButton
-const removeButton = document.createElement('input'); 
-removeButton.type = "submit";
-removeButton.value = "Delete";
-removeButton.id = "removeButton";
-addButton.addEventListener('click', addTodo); //The function addTodo runs when button is clicked
-//--- Function drafts
 addButton.addEventListener('click', addToList); //The function runs when button is clicked
 
 
-/*
-addTodo() 
-Adds the input value (string) as a list-element in ul of incomplete tasks
-.. when you click the addButton
-Also needs a checkbox and a remove-button added to the specific task ..? 
-*/
 //Function creates new todo and it's actions in a new list item
 function addToList(event){
 
@@ -65,18 +52,6 @@ function addToList(event){
 
 
 }
-/* 
-removeTask()
-Removes the listed task itself (this) completely
-wether it's in the incomplete or complete-list
-Triggered by a remove-button of some kind
-*/
-
-/* markTaskComplete()
-Moves a task from the incomplete task list to the top of completed task-list
-This is triggered when the checkbox for that sepcific task is checked
-Sets a specific css class to the completed task as well, clearly marking it as completed/done
-*/
 
 /* 
 clearTasks()
