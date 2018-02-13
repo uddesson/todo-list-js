@@ -28,20 +28,41 @@ Adds the input value (string) as a list-element in ul of incomplete tasks
 .. when you click the addButton
 Also needs a checkbox and a remove-button added to the specific task ..? 
 */
+//Function creates new todo and it's actions in a new list item
+function addToList(event){
 
-//Creates function
-function addTodo(event){
     //Stop form from resending on sumbit
     event.preventDefault(); 
 
-    //Create li-element to put the todo in
-    const listItem = document.createElement('li');
-    
-    //The listitem gets the value of the new todo
-    listItem.innerHTML = todo.value;
+    //Creates the li-element that will contain each todo + actions
+    var listItem = document
+        .createElement('li');
 
-    //Append listitem to list
+    //Creates a checkbox for each todo
+    const checkbox = document
+        .createElement('input');
+
+    checkbox.type = "checkbox";
+    checkbox.id = "checkbox";
+
+    //Creates a remove-button for each todo
+    const removeButton = document
+        .createElement('input'); 
+
+    removeButton.type = "submit";
+    removeButton.value = "Delete";
+    removeButton.id = "removeButton";
+  
+    //Append our todo and actions to the list-element
+    listItem.innerHTML = todoInput.value; //The user's input
+    listItem.appendChild(checkbox); 
+    listItem.appendChild(removeButton); 
+
+    //Add the listitem (li) to the list (ul)
     incompleteList.appendChild(listItem);
+    
+}
+
 
 }
 /* 
