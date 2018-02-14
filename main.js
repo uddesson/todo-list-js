@@ -15,6 +15,15 @@ const addButton = document
 addButton.addEventListener('click', addToList); //The function runs when button is clicked
 
 
+function remove(){    
+    this.parentElement.remove(); //Remove your parent button - and yourself!!     
+}
+
+function setComplete(){
+    completeList.appendChild(this.parentElement);
+}
+
+
 //Function creates new todo and it's actions in a new list item
 function addToList(event){
 
@@ -48,43 +57,10 @@ function addToList(event){
     //Add the listitem (li) to the list (ul)
     incompleteList.appendChild(listItem);
     
-    
-    setComplete(); //Move task to complete list when checkbox is clicked
-
-    remove(); //Remove task when remove button is clicked
 
 }
 
 
-//--- Function drafts
-
-//Fix: Eventlistener works only once. Gets error "checkbox.addEventListener is not a function 
-
-
- function setComplete(){
-
-    //Loop through the list and check for event
-    for (listItem in incompleteList){ //OBS applied to incompleteList but completeList will hade checkbox too...
-
-        checkbox.addEventListener('click', function(){
-        
-            completeList.appendChild(this.parentElement);
-            
-        })
-    }
-  
-}
-
-function remove(){
-    for (listItem in incompleteList){
-        
-        removeButton.addEventListener('click', function(){
-        
-            this.parentElement.remove(); //Remove your parent button - and yourself!! 
-            
-        })
-    }
-}
 
 
 /* 
