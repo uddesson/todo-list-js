@@ -44,8 +44,8 @@ function addToList(event){
 
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
-    //Binds each checkbox to setComplete-function, triggered when clicked
-    checkbox.addEventListener('click', setComplete); 
+    //Binds each checkbox to setStatus-function, triggered when changed
+    checkbox.addEventListener('change', setStatus); 
 
 
     //Creates a remove-button for each todo
