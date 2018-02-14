@@ -40,6 +40,7 @@ function addToList(event){
 
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
+    checkbox.addEventListener('click', setComplete);
 
     //Creates a remove-button for each todo
     const removeButton = document
@@ -48,7 +49,9 @@ function addToList(event){
     removeButton.type = "submit";
     removeButton.value = "Delete";
     removeButton.id = "removeButton";
-  
+    removeButton.addEventListener('click', remove);
+    
+
     //Append our todo and actions to the list-element
     listItem.innerHTML = todoInput.value; //The user's input
     listItem.appendChild(checkbox); 
