@@ -23,8 +23,14 @@ function remove(){
 }
 
 //Moves todo from incomplete-list to complete-list
-function setComplete(){
-    completeList.appendChild(this.parentElement);
+function setStatus(){
+    if(this.checked == true){
+        completeList.appendChild(this.parentElement);
+    }
+    
+    if(this.checked == false){
+        incompleteList.appendChild(this.parentElement);
+    }
 }
 
 
@@ -58,6 +64,7 @@ function addToList(event){
     //Binds each removeButton to remove-function, triggered when clicked
     removeButton.addEventListener('click', remove); 
 
+
     //Putting our todo and actions to the list-element in DOM
     listItem.innerHTML = todoInput.value; //The user's input
     listItem.appendChild(checkbox); 
@@ -65,6 +72,7 @@ function addToList(event){
 
     //Add the listitem (li) to the list (ul)
     incompleteList.appendChild(listItem);
+
     
 }
 
