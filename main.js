@@ -12,19 +12,23 @@ const addButton = document
     .getElementById('addButton');
 
 
-addButton.addEventListener('click', addToList); //The function runs when button is clicked
+addButton.addEventListener('click', addToList); //The main-function runs when button is clicked
 
 
-function remove(){    
+// ------- Functions
+
+//Removes todo completely
+function remove(){  
     this.parentElement.remove(); //Remove your parent button - and yourself!!     
 }
 
+//Moves todo from incomplete-list to complete-list
 function setComplete(){
     completeList.appendChild(this.parentElement);
 }
 
 
-//Function creates new todo and it's actions in a new list item
+//Main-Function: Adds new todo and actions in a new list item
 function addToList(event){
 
     //Stop form from resending on sumbit
@@ -40,7 +44,9 @@ function addToList(event){
 
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
-    checkbox.addEventListener('click', setComplete);
+    //Binds each checkbox to setComplete-function, triggered when clicked
+    checkbox.addEventListener('click', setComplete); 
+
 
     //Creates a remove-button for each todo
     const removeButton = document
@@ -49,10 +55,10 @@ function addToList(event){
     removeButton.type = "submit";
     removeButton.value = "Delete";
     removeButton.id = "removeButton";
-    removeButton.addEventListener('click', remove);
-    
+    //Binds each removeButton to remove-function, triggered when clicked
+    removeButton.addEventListener('click', remove); 
 
-    //Append our todo and actions to the list-element
+    //Putting our todo and actions to the list-element in DOM
     listItem.innerHTML = todoInput.value; //The user's input
     listItem.appendChild(checkbox); 
     listItem.appendChild(removeButton); 
@@ -60,7 +66,6 @@ function addToList(event){
     //Add the listitem (li) to the list (ul)
     incompleteList.appendChild(listItem);
     
-
 }
 
 
