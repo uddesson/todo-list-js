@@ -15,20 +15,33 @@ const addButton = document
 addButton.addEventListener('click', addToList); //The main-function runs when button is clicked
 
 
+
+
+
 // ------- Functions
+
 
 //Removes todo completely
 function remove(){  
     this.parentElement.remove(); //Remove your parent button - and yourself!!     
 }
 
-//Moves todo from incomplete-list to complete-list
+//Checks status of todo
 function setStatus(){
-    if(this.checked == true){
+    
+    //If checkbox is checked:
+    if(this.checked == true){ 
+        //Add styling class to listitem
+        this.parentElement.classList.add('complete-todo');
+        //Add the listItem (li) to completeList (ul)
         completeList.appendChild(this.parentElement);
     }
     
+    //If checkbox is unchecked:
     if(this.checked == false){
+        //Remove styling class to listitem
+        this.parentElement.classList.remove('complete-todo');
+        //Add the listItem (li) to incompleteList (ul)
         incompleteList.appendChild(this.parentElement);
     }
 }
@@ -47,7 +60,6 @@ function addToList(event){
     //Creates a checkbox for each todo
     const checkbox = document
         .createElement('input');
-
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
     //Binds each checkbox to setStatus-function, triggered when changed
@@ -57,7 +69,6 @@ function addToList(event){
     //Creates a remove-button for each todo
     const removeButton = document
         .createElement('input'); 
-
     removeButton.type = "submit";
     removeButton.value = "Delete";
     removeButton.id = "removeButton";
