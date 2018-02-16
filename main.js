@@ -23,7 +23,7 @@ addButton.addEventListener('click', addToList); //The main-function runs when bu
 
 //Removes todo completely
 function remove(){  
-    this.parentElement.remove(); //Remove your parent button - and yourself!!     
+    this.parentElement.remove(); //Remove your parent (the listItem) - and therefore yourself!!     
 }
 
 //Checks status of todo

@@ -2,6 +2,10 @@ body{
     background-color: #2d2d2d;
 }
 
+#complete, #incomplete{
+    list-style: none;
+}
+
 .complete-todo{
     color: red;
 }
@@ -15,7 +19,7 @@ body{
 }
 
 #input-container{
-    background-color: salmon;
+    background-color: palevioletred;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 30px;
