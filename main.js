@@ -47,6 +47,18 @@ function setStatus(){
         incompleteList.appendChild(this.parentElement);
     }
 }
+   
+function clearAll(){
+    
+    //For now just the incomplete ones, testing testing
+
+    console.log(incompleteList.children) //Found em! Outputs html collection (2) li,li
+
+    var children = incompleteList.children; //Put them all in a variable
+
+    incompleteList.remove(children); 
+
+}
 
 
 //Main-Function: Adds new todo and actions in a new list item
