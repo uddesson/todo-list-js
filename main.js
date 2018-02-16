@@ -10,11 +10,13 @@ const todoInput = document
     .getElementById('todo'); 
 const addButton = document
     .getElementById('addButton');
+const clearAllButton = document
+    .getElementById('clearAllButton');
 
 
 addButton.addEventListener('click', addToList); //The main-function runs when button is clicked
 
-
+clearAllButton.addEventListener('click', clearAll); 
 
 
 
