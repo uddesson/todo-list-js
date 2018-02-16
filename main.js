@@ -78,7 +78,7 @@ function clearAll(){
 
 //Stops user from entering an empty task
 function checkifEmpty(input){
-    if (input === ""){
+    if (input.trim() == ''){
         console.log('Oppps that is not a string') //Temporary output for testing
         return true;
     } else {
