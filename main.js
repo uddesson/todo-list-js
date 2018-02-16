@@ -95,17 +95,8 @@ function addToList(event){
     listItem.appendChild(checkbox); 
     listItem.appendChild(removeButton); 
 
+
     //Add the listitem (li) to the list (ul)
     incompleteList.appendChild(listItem);
-
     
 }
-
-
-
-
-/* 
-clearTasks()
-Clears (removes) all your tasks - from both lists
-when you click the clear button
-*/
