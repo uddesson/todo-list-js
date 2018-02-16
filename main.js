@@ -24,7 +24,7 @@ clearAllButton.addEventListener('click', clearAll);
 
 
 //Removes todo completely
-function remove(){  
+function removeTodo(){  
     this.parentElement.remove(); //Remove your parent (the listItem) - and therefore yourself!!     
 }
 
@@ -87,7 +87,7 @@ function addToList(event){
     removeButton.value = "Delete";
     removeButton.id = "removeButton";
     //Binds each removeButton to remove-function, triggered when clicked
-    removeButton.addEventListener('click', remove); 
+    removeButton.addEventListener('click', removeTodo); 
 
 
     //Putting our todo and actions to the list-element in DOM
