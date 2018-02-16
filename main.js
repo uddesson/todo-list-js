@@ -50,13 +50,13 @@ function setStatus(){
    
 function clearAll(){
     
-    //For now just the incomplete ones, testing testing
+    //Put all tasks (the children of the list) in the same variable
+    var incompleteTodos = incompleteList.children; 
+    var completeTodos = completeList.children; 
 
-    console.log(incompleteList.children) //Found em! Outputs html collection (2) li,li
-
-    var children = incompleteList.children; //Put them all in a variable
-
-    incompleteList.remove(children); 
+    //Remove those variables (all todos everywhereee)
+    incompleteList.remove(incompleteTodos); 
+    completeList.remove(completeTodos);
 
 }
 
