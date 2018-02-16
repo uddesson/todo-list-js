@@ -76,6 +76,16 @@ function clearAll(){
     }
 }
 
+//Stops user from entering an empty task
+function checkifEmpty(input){
+    if (input === ""){
+        console.log('Oppps that is not a string') //Temporary output for testing
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 //Main-Function: Adds new todo and actions in a new list item
 function addToList(event){
@@ -110,9 +120,18 @@ function addToList(event){
     listItem.innerHTML = todoInput.value; //The user's input
     listItem.appendChild(checkbox); 
     listItem.appendChild(removeButton); 
+    
+    //Checks if the user has tried to enter an empty string
+    if(checkifEmpty(todoInput.value) == true){
 
+        //I should have some output for the user here
+
+        return; //Exits the entire function and todo will not be added
+    } 
 
     //Add the listitem (li) to the list (ul)
     incompleteList.appendChild(listItem);
+
+    
     
 }
