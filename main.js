@@ -48,15 +48,23 @@ function setStatus(){
     }
 }
    
+//Clears both lists, removing all todos
 function clearAll(){
     
     //Put all tasks (the children of the list) in the same variable
     var incompleteTodos = incompleteList.children; 
     var completeTodos = completeList.children; 
 
-    //Remove those variables (all todos everywhereee)
-    incompleteList.remove(incompleteTodos); 
-    completeList.remove(completeTodos);
+    var iamSure = confirm("Are you sure?");
+
+    if(iamSure == true){
+        //Remove the variables created in this function (all todos everywhereee)
+        incompleteList.remove(incompleteTodos); 
+        completeList.remove(completeTodos);
+    }
+    else {
+        return; //Do nothing, keep your todos!
+    }
 
 }
 
