@@ -55,17 +55,25 @@ function clearAll(){
     var incompleteTodos = incompleteList.children; 
     var completeTodos = completeList.children; 
 
-    var iamSure = confirm("Are you sure?");
+    //First check if there actually is something to delete
+    if((incompleteTodos.length > 0) || (completeTodos.length > 0)){
+        
+        //Ask user if they are sure
+        var iamSure = confirm("Are you sure? This will delete everything. And I mean everything.");
 
-    if(iamSure == true){
-        //Remove the variables created in this function (all todos everywhereee)
-        incompleteList.remove(incompleteTodos); 
-        completeList.remove(completeTodos);
+        if(iamSure == true){
+            //Remove the variables created in this function (all todos everywhereee)
+            incompleteList.remove(incompleteTodos); 
+            completeList.remove(completeTodos);
+        }
+        else {
+            return; //Do nothing, keep your todos!
+        }
     }
+    
     else {
-        return; //Do nothing, keep your todos!
+        return; //Don't ask the user anything
     }
-
 }
 
 
