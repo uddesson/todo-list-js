@@ -158,9 +158,16 @@ function addToList(event){
         return; //Exits the entire function and todo will not be added
     } 
 
+    //Checks if the user is entering a todo that already exists
+    if(checkforDuplicate(listItem) == true){
+
+        //I should have some output for the user here
+        console.log('Duplicate found!'); //Temp
+    }
+
     //Add the listitem (li) to the list (ul)
     incompleteList.appendChild(listItem);
 
     
-    
 }
+
