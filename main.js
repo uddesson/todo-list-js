@@ -76,6 +76,35 @@ function clearAll(){
     }
 }
 
+//Checks for identical todos in the incomplete-list
+function checkforDuplicate(todo){
+    var incompleteTodos = incompleteList.children; 
+    var duplicateExists = false; //Set as default
+
+    //Don't run the rest of the function unless there aren't any tasks
+    if((incompleteTodos.length > 0)){
+
+
+        console.log(todo); //The todo only
+        console.log(incompleteList.firstElementChild) //<li>..</li>
+        console.log(incompleteTodos) //HTML Collection[]
+
+        
+        // //Loop through the list of existing tasks here..somehow
+       
+        // if(){
+        //     duplicateExists = true;
+
+        // } else{ 
+        //     duplicateExists = false;
+        // }
+    }
+  
+    return;
+
+}
+
+
 //Stops user from entering an empty task
 function checkifEmpty(input){
     if (input.trim() == ''){
