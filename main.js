@@ -25,7 +25,7 @@ clearAllButton.addEventListener('click', clearAll);
 
 //Removes todo completely
 function removeTodo(){  
-    this.parentElement.remove(); //Remove your parent (the listItem) - and therefore yourself!!     
+    this.parentElement.remove(); //Remove your parent (the listElement) - and therefore yourself!!     
 }
 
 //Checks status of todo
@@ -33,17 +33,17 @@ function setStatus(){
     
     //If checkbox is checked:
     if(this.checked == true){ 
-        //Add styling class to listitem
+        //Add styling class to listElement
         this.parentElement.classList.add('complete-todo');
-        //Add the listItem (li) to completeList (ul)
+        //Add the listElement (li) to completeList (ul)
         completeList.appendChild(this.parentElement);
     }
     
     //If checkbox is unchecked:
     if(this.checked == false){
-        //Remove styling class to listitem
+        //Remove styling class to listElement
         this.parentElement.classList.remove('complete-todo');
-        //Add the listItem (li) to incompleteList (ul)
+        //Add the listElement (li) to incompleteList (ul)
         incompleteList.appendChild(this.parentElement);
     }
 }
@@ -123,12 +123,12 @@ function addToList(event){
     event.preventDefault(); 
 
     //Creates the li-element that will contain each todo + actions
-    var listItem = document
-        .createElement('li');
+    var listElement = document.
+       createElement('li');
 
     //Creates a checkbox for each todo
-    const checkbox = document
-        .createElement('input');
+    const checkbox = document.
+        createElement('input');
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
     //Binds each checkbox to setStatus-function, triggered when changed
@@ -165,8 +165,9 @@ function addToList(event){
         console.log('Duplicate found!'); //Temp
     }
 
-    //Add the listitem (li) to the list (ul)
-    incompleteList.appendChild(listItem);
+
+    //Add the listElement (li) to the list (ul)
+    incompleteList.appendChild(listElement);
 
     
 }
