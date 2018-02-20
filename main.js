@@ -139,6 +139,24 @@ function checkifEmpty(input){
     }
 }
 
+//Adds an id to every listElement
+function addID(){
+    if (incompleteList.children.length == 0){ //If there aren't any todos yet
+
+    /* Some sort of temporary solution for avoiding 
+    the first id to be "undefined" or double 0*/
+        var todoID = -1; 
+
+    } else {
+        
+        //Set a new id for every todo, based on list-count
+        for (var i = 0; i < incompleteList.children.length; i++){ 
+            var todoID = i;
+        }
+    }
+    
+    return todoID;
+}
 
 
 //Adds the users input to a list-element
