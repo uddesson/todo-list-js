@@ -102,31 +102,35 @@ function getTodos(){
         //Use parse to turn it back from string to regular array - and return it
         return JSON.parse(fetchedArray); 
     }
-
+    
 }
+
 
 //Removes todo completely
 function removeTodo(){  
+    // change something in local storage (remove from array)
+    // refresh
     this.parentElement.remove(); //Remove your parent (the listElement) - and therefore yourself!!     
 }
 
-//Checks status of todo
+//Changes status of todo when checkbox is marked
 function setStatus(){
     
     //If checkbox is checked:
-    if(this.checked == true){ 
-        //Add styling class to listElement
-        this.parentElement.classList.add('complete-todo');
-        //Add the listElement (li) to completeList (ul)
-        completeList.appendChild(this.parentElement);
+    if(todo.checked == true){ 
+
+        // //Add styling class to listElement
+        // this.parentElement.classList.add('complete-todo');
+        // //Add the listElement (li) to completeList (ul)
+        // completeList.appendChild(this.parentElement);
     }
     
     //If checkbox is unchecked:
-    if(this.checked == false){
-        //Remove styling class to listElement
-        this.parentElement.classList.remove('complete-todo');
-        //Add the listElement (li) to incompleteList (ul)
-        incompleteList.appendChild(this.parentElement);
+    if(todo.checked == false){
+        // //Remove styling class to listElement
+        // this.parentElement.classList.remove('complete-todo');
+        // //Add the listElement (li) to incompleteList (ul)
+        // incompleteList.appendChild(this.parentElement);
     }
 }
    
@@ -164,29 +168,28 @@ function clearAll(){
 
 //Checks for identical todos in the incomplete-list
 function checkforDuplicate(todo){
-    var incompleteTodos = incompleteList.children; 
-    var duplicateExists = false; //Set as default
+    
+    // var listLength = incompleteList.children.length;
+   
+    // var duplicateExists = false; //Set as default
 
-    //Don't run the rest of the function unless there aren't any tasks
-    if((incompleteTodos.length > 0)){
+    // //Don't run the rest of the function unless there aren't any tasks
+    // if((listLength > 0)){
 
-
-        console.log(todo); //The todo only
-        console.log(incompleteList.firstElementChild) //<li>..</li>
-        console.log(incompleteTodos) //HTML Collection[]
-
+    //     for (i = 0; i < listLength; i++) {
         
-        // //Loop through the list of existing tasks here..somehow
-       
         // if(){
         //     duplicateExists = true;
 
         // } else{ 
         //     duplicateExists = false;
         // }
-    }
+
+    //     }   
+     
+    // }
   
-    return;
+//     return;
 
 }
 
@@ -201,28 +204,10 @@ function checkifEmpty(input){
     }
 }
 
-//Adds an id to every listElement
-function addID(){
-    if (incompleteList.children.length == 0){ //If there aren't any todos yet
-
-    /* Some sort of temporary solution for avoiding 
-    the first id to be "undefined" or double 0*/
-        var todoID = -1; 
-
-    } else {
-        
-        //Set a new id for every todo, based on list-count
-        for (var i = 0; i < incompleteList.children.length; i++){ 
-            var todoID = i;
-        }
-    }
-    
-    return todoID;
-}
 
 
-//Adds the users input to a list-element
-function addToList(todo){
+//Wraps input within HTML-element and adds actions
+function addToList(text,checked,id){
 
     //Creates the li-element that will contain each todo + actions
     var listElement = document.
@@ -233,7 +218,7 @@ function addToList(todo){
         createElement('input');
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
-    checkbox.checked = todo.done;
+    checkbox.checked = checked;
     //Binds each checkbox to setStatus-function, triggered when changed
     checkbox.addEventListener('change', setStatus); 
 
@@ -249,30 +234,20 @@ function addToList(todo){
 
 
     //Putting our todo and actions to the list-element in DOM 
-    listElement.innerHTML = '<p>' + todo.text + '</p>'; //The user's input
-    listElement.id = todo.id;
+    listElement.innerHTML = '<p>' + text + '</p>'; //The user's input
+    listElement.id = id;
     listElement.appendChild(checkbox); 
     listElement.appendChild(removeButton); 
     
-    //Checks if the user has tried to enter an empty string
-    if(checkifEmpty(todoInput.value) == true){
 
-        //I should have some output for the user here
-
-        return; //Exits the entire function and todo will not be added
-    } 
-
-    //Checks if the user is entering a todo that already exists
-    if(checkforDuplicate(listItem) == true){
-
-        //I should have some output for the user here
-        console.log('Duplicate found!'); //Temp
+    //Add to either complete or incomplete-list depending on checkbox -state
+    if(checked == false){
+        listElement.classList.add('incomplete-todo');
+        incompleteList.appendChild(listElement);
+        
+    } else if (checked == true){
+        listElement.classList.add('complete-todo');
+        completeList.appendChild(listElement);
     }
 
-
-    //Add the listElement (li) to the list (ul)
-    incompleteList.appendChild(listElement);
-
-    
 }
-
