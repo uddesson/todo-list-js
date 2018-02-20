@@ -19,7 +19,9 @@ button.addEventListener('click', handleInput)
 
 clearAllButton.addEventListener('click', clearAll); 
 
+//Calls refreshlist function onload, see more.. refreshList();
 window.onload = refreshList;
+
 
 // ------- Functions
 
@@ -46,26 +48,36 @@ function handleInput(event){
     var existingTodos = getTodos();
     
     //Add new todo to the array
-    existingTodos.push({text: todoInput.value, done: false, id: existingTodos.length});
+    existingTodos.push({text: todoInput.value, checked: false, id: existingTodos.length});
+
+    // existingTodos.push(todoInput.value);
+    
 
     setTodos(existingTodos); //LocalStore array with new value 
 
     //If the input (todo) has passed the checks - the todo is added
     refreshList();
 
-    console.log('existing todos : ' , existingTodos) //Testing
-
     
 }
 
-
+/* Checks my locally stored todos against the ones that are in the HTML,
+everytime it's called, it actually replaces the HTML with the todos in localStorage */
 function refreshList(){
+    
+    //Assigns getTodos(Returns existing, locally stored todos) to new variable
     var list = getTodos();
+    
+    /* The ul of todos is emptied, so it will not have any todos lying around just as HTML-elements, 
+    .. without having a counterpart locally stored */
+    incompleteList.innerHTML = '';
 
-    // need to empty list here, now refresh adds the list again
-
+    //Loops through the locally stored array
     for (var i = 0; i < list.length; i++){
-        addToList(list[i]);
+
+        /*Sends our todo-objects along with it's values into to the addToList-function,
+        Which will put them into HTML-elements and append them to the ul*/
+        addToList(list[i].text, list[i].checked, list[i].id);
     }
 }
 
@@ -79,10 +91,11 @@ function getTodos(){
     
     //Fetch array from local storage
     var fetchedArray = localStorage.getItem("todoList");
+    
 
     if (fetchedArray == null){
-        /* return empty array if there aren't any existing arrays, 
-        otherwise array method push will give warning message */
+        
+        // Return empty array if there aren't any existing arrays, 
         return [];
 
     } else {
