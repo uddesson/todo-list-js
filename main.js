@@ -8,13 +8,14 @@ const completeList = document
 //Fetches the main input field and button from the document
 const todoInput = document
     .getElementById('todo'); 
-const addButton = document
-    .getElementById('addButton');
+
+const button = document
+    .getElementById('button');
 const clearAllButton = document
     .getElementById('clearAllButton');
 
 
-addButton.addEventListener('click', addToList); //The main-function runs when button is clicked
+button.addEventListener('click', handleInput)
 
 clearAllButton.addEventListener('click', clearAll); 
 
@@ -22,6 +23,27 @@ clearAllButton.addEventListener('click', clearAll);
 
 // ------- Functions
 
+/* When the user presses the add button
+the input is evaluated and handled by this function */ 
+function handleInput(event){
+
+    //Stop form from resending on sumbit
+    event.preventDefault(); 
+    
+    //Checks if the user has tried to enter an empty string
+    if(checkifEmpty(todoInput.value) == true){
+
+        // (I should have some output for the user here)
+
+        return; //Exits the entire function and todo will not be added
+    } 
+
+    // checkforDuplicate(todo); (Not working yet)
+
+    //If the input (todo) has passed the checks - add it do the list
+    addToList(todoInput.value);
+
+}
 
 //Removes todo completely
 function removeTodo(){  
