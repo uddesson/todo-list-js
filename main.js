@@ -19,6 +19,8 @@ button.addEventListener('click', handleInput)
 
 clearAllButton.addEventListener('click', clearAll); 
 
+var todoArray = []; //Creates an empty array to store our todos in for localStorage-purposes
+
 
 
 // ------- Functions
