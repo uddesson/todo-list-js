@@ -41,21 +41,21 @@ function handleInput(event){
     } 
 
     // checkforDuplicate(todo); (Not working yet)
+    var existingTodos = getTodos();
 
-    //If the input (todo) has passed the checks - add it do the list
-    addToList(todoInput.value);
-    //Add it to the array
+    //Add new todo to the array
     todoArray.push(todoInput.value);
 
 
     setTodos(todoArray); //LocalStore array with new value 
 
+
     //If the input (todo) has passed the checks - add it do the list
     addToList(todoInput.value);
     
-    console.log(todoArray) //Testing
+    console.log('todoArray: ' + todoArray) //Testing
 
-    console.log(getTodos()) //Testing
+    console.log('existing todos: ' + existingTodos) //Testing
     
 }
 
