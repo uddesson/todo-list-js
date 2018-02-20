@@ -114,7 +114,11 @@ function clearAll(){
         var iamSure = confirm("Are you sure? This will delete everything. And I mean everything.");
 
         if(iamSure == true){
-            //Remove the variables created in this function (all todos everywhereee)
+
+            //Clear localStorage
+            localStorage.clear();
+
+            //Remove all todos everywhereee
             incompleteList.remove(incompleteTodos); 
             completeList.remove(completeTodos);
         }
