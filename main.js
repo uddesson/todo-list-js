@@ -140,11 +140,9 @@ function checkifEmpty(input){
 }
 
 
-//Main-Function: Adds new todo and actions in a new list item
-function addToList(event){
 
-    //Stop form from resending on sumbit
-    event.preventDefault(); 
+//Adds the users input to a list-element
+function addToList(todo){
 
     //Creates the li-element that will contain each todo + actions
     var listElement = document.
@@ -169,10 +167,11 @@ function addToList(event){
     removeButton.addEventListener('click', removeTodo); 
 
 
-    //Putting our todo and actions to the list-element in DOM
-    listItem.innerHTML = todoInput.value; //The user's input
-    listItem.appendChild(checkbox); 
-    listItem.appendChild(removeButton); 
+    //Putting our todo and actions to the list-element in DOM 
+    listElement.innerHTML = '<p>' + todo + '</p>'; //The user's input
+    listElement.id = addID();
+    listElement.appendChild(checkbox); 
+    listElement.appendChild(removeButton); 
     
     //Checks if the user has tried to enter an empty string
     if(checkifEmpty(todoInput.value) == true){
