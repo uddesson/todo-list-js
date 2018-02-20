@@ -220,6 +220,7 @@ function addToList(todo){
         createElement('input');
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
+    checkbox.checked = todo.done;
     //Binds each checkbox to setStatus-function, triggered when changed
     checkbox.addEventListener('change', setStatus); 
 
@@ -235,8 +236,8 @@ function addToList(todo){
 
 
     //Putting our todo and actions to the list-element in DOM 
-    listElement.innerHTML = '<p>' + todo + '</p>'; //The user's input
-    listElement.id = addID();
+    listElement.innerHTML = '<p>' + todo.text + '</p>'; //The user's input
+    listElement.id = todo.id;
     listElement.appendChild(checkbox); 
     listElement.appendChild(removeButton); 
     
