@@ -19,9 +19,7 @@ button.addEventListener('click', handleInput)
 
 clearAllButton.addEventListener('click', clearAll); 
 
-var todoArray = []; //Creates an empty array to store our todos in for localStorage-purposes
-
-
+window.onload = refreshList;
 
 // ------- Functions
 
@@ -40,38 +38,57 @@ function handleInput(event){
         return; //Exits the entire function and todo will not be added
     } 
 
-    // checkforDuplicate(todo); (Not working yet)
-    var existingTodos = getTodos();
-
-    //Add new todo to the array
-    todoArray.push(todoInput.value);
-
-
-    setTodos(todoArray); //LocalStore array with new value 
-
-
-    //If the input (todo) has passed the checks - add it do the list
-    addToList(todoInput.value);
+    // checkforDuplicate(todoInput.value); (Not working yet)
     
-    console.log('todoArray: ' + todoArray) //Testing
 
-    console.log('existing todos: ' + existingTodos) //Testing
+    /* existing todos is set to be the return from getTodos,
+    which is where I fetch the locally stored array of todos */
+    var existingTodos = getTodos();
+    
+    //Add new todo to the array
+    existingTodos.push({text: todoInput.value, done: false, id: existingTodos.length});
+
+    setTodos(existingTodos); //LocalStore array with new value 
+
+    //If the input (todo) has passed the checks - the todo is added
+    refreshList();
+
+    console.log('existing todos : ' , existingTodos) //Testing
+
     
 }
 
 
-function setTodos(todoArray){
+function refreshList(){
+    var list = getTodos();
+
+    // need to empty list here, now refresh adds the list again
+
+    for (var i = 0; i < list.length; i++){
+        addToList(list[i]);
+    }
+}
+
+function setTodos(todoList){
     
     //Save the input (the array) as strings in localStorage
-    localStorage.setItem("todoArray", JSON.stringify(todoArray));
+    localStorage.setItem("todoList", JSON.stringify(todoList));
 }
 
 function getTodos(){ 
     
     //Fetch array from local storage
-    var fetchedArray = localStorage.getItem("todoArray");
-    //Use parse to turn it back from string to regular array - and return it
-    return JSON.parse(fetchedArray); 
+    var fetchedArray = localStorage.getItem("todoList");
+
+    if (fetchedArray == null){
+        /* return empty array if there aren't any existing arrays, 
+        otherwise array method push will give warning message */
+        return [];
+
+    } else {
+        //Use parse to turn it back from string to regular array - and return it
+        return JSON.parse(fetchedArray); 
+    }
 
 }
 
