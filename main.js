@@ -48,6 +48,31 @@ function handleInput(event){
     todoArray.push(todoInput.value);
 
 
+    setTodos(todoArray); //LocalStore array with new value 
+
+    //If the input (todo) has passed the checks - add it do the list
+    addToList(todoInput.value);
+    
+    console.log(todoArray) //Testing
+
+    console.log(getTodos()) //Testing
+    
+}
+
+
+function setTodos(todoArray){
+    
+    //Save the input (the array) as strings in localStorage
+    localStorage.setItem("todoArray", JSON.stringify(todoArray));
+}
+
+function getTodos(){ 
+    
+    //Fetch array from local storage
+    var fetchedArray = localStorage.getItem("todoArray");
+    //Use parse to turn it back from string to regular array - and return it
+    return JSON.parse(fetchedArray); 
+
 }
 
 //Removes todo completely
