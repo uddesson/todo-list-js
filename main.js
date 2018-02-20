@@ -44,6 +44,9 @@ function handleInput(event){
 
     //If the input (todo) has passed the checks - add it do the list
     addToList(todoInput.value);
+    //Add it to the array
+    todoArray.push(todoInput.value);
+
 
 }
 
