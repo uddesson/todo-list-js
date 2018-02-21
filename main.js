@@ -71,6 +71,7 @@ function refreshList(){
     /* The ul of todos is emptied, so it will not have any todos lying around just as HTML-elements, 
     .. without having a counterpart locally stored */
     incompleteList.innerHTML = '';
+    completeList.innerHTML = '';
 
     //Loops through the locally stored array
     for (var i = 0; i < list.length; i++){
