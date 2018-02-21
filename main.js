@@ -37,10 +37,16 @@ function handleInput(event){
 
         // (I should have some output for the user here)
 
-        return; //Exits the entire function and todo will not be added
+        return; //Exits the function and todo will not be added
     } 
 
-    // checkforDuplicate(todoInput.value); (Not working yet)
+    if(checkforDuplicate(todoInput.value) == true){
+
+                // (I should have some output for the user here)
+        console.log('Woops! Duplicate found!')
+
+        return; //Exits the entire function and todo will not be added
+    }
     
 
     /* existing todos is set to be the return from getTodos,
@@ -196,31 +202,28 @@ function clearAll(){
     }
 }
 
-//Checks for identical todos in the incomplete-list
+//Checks if the user already has added a todo with the same content
 function checkforDuplicate(todo){
-    
-    // var listLength = incompleteList.children.length;
-   
-    // var duplicateExists = false; //Set as default
 
-    // //Don't run the rest of the function unless there aren't any tasks
-    // if((listLength > 0)){
+    //Fetching our existing todos from localstorage
+    var existingTodos = getTodos(); 
 
-    //     for (i = 0; i < listLength; i++) {
-        
-        // if(){
-        //     duplicateExists = true;
+    //For every existing todo ..
+    for (var i = 0; i < existingTodos.length; i++){
 
-        // } else{ 
-        //     duplicateExists = false;
-        // }
+        //Check if the new todo is the (exact) same as the existing todo
+        if(existingTodos[i].text == todo){
+            
+            //There is a duplicate!
+            return true;
+        }
 
-    //     }   
-     
-    // }
-  
-//     return;
+        else {
 
+            //There isn't one, move along
+            return false;
+        }
+    }
 }
 
 
