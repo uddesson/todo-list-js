@@ -176,25 +176,22 @@ function setStatus(){
 //Clears both lists, removing all todos
 function clearAll(){
     
-    //Put all tasks (the children of the list) in the same variable
-    var incompleteTodos = incompleteList.children; 
-    var completeTodos = completeList.children; 
+    var existingTodos = getTodos()
 
     //First check if there actually is something to delete
-    if((incompleteTodos.length > 0) || (completeTodos.length > 0)){
+    if(existingTodos.length > 0){
         
         //Ask user if they are sure
         var iamSure = confirm("Are you sure? This will delete everything. And I mean everything.");
 
         if(iamSure == true){
 
-            //Clear localStorage
             localStorage.clear();
 
             //Remove all todos everywhereee
-            incompleteList.remove(incompleteTodos); 
-            completeList.remove(completeTodos);
+            refreshList();
         }
+        
         else {
             return; //Do nothing, keep your todos!
         }
