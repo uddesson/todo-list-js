@@ -66,7 +66,7 @@ everytime it's called, it actually replaces the HTML with the todos in localStor
 function refreshList(){
     
     //Assigns getTodos(Returns existing, locally stored todos) to new variable
-    var list = getTodos();
+    var existingTodos = getTodos();
     
     /* The ul of todos is emptied, so it will not have any todos lying around just as HTML-elements, 
     .. without having a counterpart locally stored */
@@ -74,12 +74,15 @@ function refreshList(){
     completeList.innerHTML = '';
 
     //Loops through the locally stored array
-    for (var i = 0; i < list.length; i++){
+    for (var i = 0; i < existingTodos.length; i++){
 
         /*Sends our todo-objects along with it's values into to the addToList-function,
         Which will put them into HTML-elements and append them to the ul*/
-        addToList(list[i].text, list[i].checked, list[i].id);
+        addToList(existingTodos[i].text, existingTodos[i].checked, existingTodos[i].id);
     }
+
+    console.log(existingTodos);
+
 }
 
 function setTodos(todoList){
