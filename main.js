@@ -242,7 +242,7 @@ function addToList(text,checked,id){
     removeButton.value = "Delete";
     removeButton.id = "removeButton";
     //Binds each removeButton to remove-function, triggered when clicked
-    removeButton.addEventListener('change', removeTodo); 
+    removeButton.addEventListener('click', removeTodo); 
 
 
     //Putting our todo and actions to the list-element in DOM 
