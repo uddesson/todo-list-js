@@ -12,36 +12,36 @@
     <div id="todo-wrapper"> 
         
         <div id="input-container">
-            <h1>Todos</h1>
+            <h1>Stuff to do</h1>
             <form>
                 <label for="todo" class="hidden">Write your todo</label>
                 <input type="text" name="todo" id="todo" placeholder="Ex. Buy halloumi">
                 <label for="button" class="hidden">Add todo-button</label>
-                <input type="submit" id="button" value="Add to list"> 
+                <input type="submit" id="button" value="Add me!"> 
             </form>
 
-            <div id="action-message-container">
+            <div id="output-message-container">
                 <!-- Potential sucess or error message goes here -->
             </div>
         </div>
 
         <div class="task-container">
-            <h2>To be completed:</h2>
-            <ul id="incomplete">
+            <h2>To Do:</h2>
+            <ul id="incomplete-ul">
                 <!-- List of current tasks -->    
             </ul>
         </div>
         
         <div class="task-container">
             <h2>Done:</h2>
-            <ul id="complete">
+            <ul id="complete-ul">
                 <!-- List of completed tasks -->
             </ul>
         </div>
 
         <div id="clear-action-container">
-            <button id="clearAllButton">Clear all tasks</button>
-            <p>(This will remove all your tasks, both incomplete and complete ones.)</p>
+            <button id="clear-button">Clear List</button>
+            <p id="clearall-note">This will remove all of your tasks.</p>
         </div>
         
     </div> <!--./todo-wrapper -->
