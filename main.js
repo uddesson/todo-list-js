@@ -116,22 +116,30 @@ function removeTodo(){
 //Changes status of todo when checkbox is marked
 function setStatus(){
     
-    //If checkbox is checked:
-    if(todo.checked == true){ 
+    //get the id from listitem <li>
+    console.log(this.parentElement.id); //Testing
 
-        // //Add styling class to listElement
-        // this.parentElement.classList.add('complete-todo');
-        // //Add the listElement (li) to completeList (ul)
-        // completeList.appendChild(this.parentElement);
+    //Find the todo-id
+    var id = this.parentElement.id;
+
+    var todo; 
+    var existingTodos = getTodos(); //Again, fetching our existing todos from localstorage
+
+    //For every existing todo - check if that id is the same as this.parentElement.id
+    for (var i = 0; i < existingTodos.length; i++){
+        if(existingTodos[i].id == id){
+            //Set that todo to the same existing todo
+            todo = existingTodos[i];
+        }
     }
-    
-    //If checkbox is unchecked:
-    if(todo.checked == false){
-        // //Remove styling class to listElement
-        // this.parentElement.classList.remove('complete-todo');
-        // //Add the listElement (li) to incompleteList (ul)
-        // incompleteList.appendChild(this.parentElement);
-    }
+
+    //Sets the checked-sate of the todo when clicked/changed!
+    todo.checked = !todo.checked;
+
+    setTodos(existingTodos); //LocalStore array with new value (for ex. checked = true)
+
+    refreshList(); //Refresh the locally stored todos and and them again to the html
+
 }
    
 //Clears both lists, removing all todos
