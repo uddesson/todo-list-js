@@ -1,18 +1,34 @@
 body{
-    background-color: #2d2d2d;
+    background-color: #ECF0F1;
+}
+
+p,h1,h2{
+    color: #575757;
+    font-family: 'Rubik', sans-serif;
+}
+
+p{
+    font-size: 0.9em;
+}
 
 .hidden{
     visibility: hidden;
     display: none;
-
 }
 
 #complete, #incomplete{
     list-style: none;
+    padding-left: 5px; 
+    margin-bottom: 20px; 
 }
 
 .complete-todo{
-    color: red;
+    color: rgb(160, 160, 160);
+    text-decoration: line-through;  
+
+    p{
+        color: rgb(160, 160, 160);
+    }   
 }
 
 #todo-wrapper{
@@ -20,23 +36,67 @@ body{
     border-radius: 5px;
     background-color: #fff;
     width: 80vw;
-    height: 90vh;
+    padding-bottom: 50px;
 }
 
 #input-container{
-    background-color: palevioletred;
+    background-color: #F9BF3B;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 30px;
     margin: 0 auto 0 auto;
 }
 
-.task-container{
-    width: 90%;
-    border: 1px solid green;
+input#todo{
+    background-color: rgb(211, 151, 12);
+    height: 40px;
+    width: 200px;
+    border: 0px;
+    border-radius: 5px;
+    text-indent: 10px;
+    font-size: 0.8em;
+    color: #fff;
 }
 
-.task-container, #clear-action-container{
+::placeholder{
+    opacity: 0.3;
+    color: #000;
+}
+
+input#button{
+    background-color: rgb(255, 229, 169);
+    height: 40px;
+    width: 80px;
+    border: 0px;
+    border-radius: 5px;
+    margin-left: 5px;
+    font-weight: 700;
+    font-size: 0.8em;
+    color: #575757;
+}
+
+input#button:hover{
+    background-color: #ECF0F1;
+}
+
+
+#action-message-container{
+    height: 20px;
+    padding-top: 5px;
+}
+
+#message{
+    color: rgb(163, 122, 24);
+}
+
+.task-container{
     margin: 10px auto 10px auto;
-    padding: 10px;
+    min-height: 100px;
+    width: 90%;
+    border-bottom: 1px dashed #e9e9e9;
+}
+
+#clear-action-container{
+    
+    margin: 30px 10px 10px 30px;
 }
