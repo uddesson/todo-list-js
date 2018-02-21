@@ -3,6 +3,8 @@ const incompleteList = document
     .getElementById('incomplete'); //Will contain list of incomplete tasks
 const completeList = document
     .getElementById('complete'); //Will contain list of complete tasks
+const returnMessage = document 
+    .getElementById('action-message-container'); //Will display error/success-messages to the user
 
 
 //Fetches the main input field and button from the document
@@ -35,15 +37,16 @@ function handleInput(event){
     //Checks if the user has tried to enter an empty string
     if(checkifEmpty(todoInput.value) == true){
 
-        // (I should have some output for the user here)
+        var message = "Oops! Looks like you're trying to add an empty task.";
+        returnMessage.innerHTML = `<p id='message'> ${message} </p`;
 
         return; //Exits the function and todo will not be added
     } 
 
     if(checkforDuplicate(todoInput.value) == true){
 
-                // (I should have some output for the user here)
-        console.log('Woops! Duplicate found!')
+        var message = "Oops! You already have a todo exactly like that one.";
+        returnMessage.innerHTML = `<p id='message'> ${message} </p`;
 
         return; //Exits the entire function and todo will not be added
     }
