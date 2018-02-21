@@ -112,9 +112,27 @@ function getTodos(){
 
 //Removes todo completely
 function removeTodo(){  
-    // change something in local storage (remove from array)
-    // refresh
-    this.parentElement.remove(); //Remove your parent (the listElement) - and therefore yourself!!     
+   
+     //Find the todo-id on wich we clicked the delete button
+     var id = this.parentElement.id;
+
+     //Again, fetching our existing todos from localstorage
+     var existingTodos = getTodos(); 
+ 
+     //For every existing todo - check if that id is the same as this.parentElement.id
+     for (var i = 0; i < existingTodos.length; i++){
+         if(existingTodos[i].id == id){
+            
+            //If the id is the clicked one, splice the object on that index 
+            existingTodos.splice(i, 1)    
+
+            //When our array of todos has been changed, store it again in localStorage 
+            setTodos(existingTodos);
+
+            refreshList(); //Refresh the locally stored todos and and them again to the html
+         }
+    }
+
 }
 
 //Changes status of todo when checkbox is marked
