@@ -221,11 +221,6 @@ function checkforDuplicate(todo){
             return true;
         }
 
-        else {
-
-            //There isn't one, move along
-            return false;
-        }
     }
 }
 
