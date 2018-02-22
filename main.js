@@ -1,72 +1,78 @@
+//These are the elements I will need from the DOM
+const todoInput = document
+    .getElementById('todo'); 
+
+const handleInputButton = document
+    .getElementById('add-button');
+
 const incompleteList = document
     .getElementById('incomplete-ul'); 
 
-    const completeList = document
+const completeList = document
     .getElementById('complete-ul'); 
 
 const outputToUser = document 
     .getElementById('output-message-container'); 
-
-const todoInput = document
-    .getElementById('todo'); 
-
-const button = document
-    .getElementById('button');
     
 const clearAllButton = document
     .getElementById('clear-button');
 
-button.addEventListener('click', handleUserInput) 
+handleInputButton.addEventListener('click', handleUserInput) 
 clearAllButton.addEventListener('click', clearAll); 
 
-//Calls refreshlist function onload, see more at refreshList();
-window.onload = refreshList;
+window.onload = refreshTodoList; //See more at refreshTodoList();
 
-// User input is evaluated and handled
+//User input is evaluated, checks if task can be added correctly - then adds it
 function handleUserInput(event){
 
-    //Stop form from resending on sumbit
+    //Stop page from refreshing on submit
     event.preventDefault(); 
     
     if(checkifEmpty(todoInput.value) == true){
-
         var message = "Oops! Looks like you're trying to add an empty task.";
+        
         outputToUser.innerHTML = `<p id='message'> ${message} </p`;
-        return; //Exits the function and todo will not be added
+        
+        return; //Todo will not be added
     }
 
     if(duplicateExists(todoInput.value) == true){
-        
         var message = "Oops! You already have a todo exactly like that one.";
+        
         outputToUser.innerHTML = `<p id='message'> ${message} </p`;
-        return; //Exits the function and todo will not be added
+        
+        return; //Todo will not be added
     }
 
-    var existingTodos = getLocallyStoredTodos();
+    //I fetch my array of locally stored todos!
+    var existingTodos = getLocallyStoredTodos(); 
 
-    //Add new todo as an object
+    //I push the new todo as an object in to my array, and sets it's default values
     existingTodos.push({text: todoInput.value, checked: false, id: existingTodos.length});
 
-    setTodoToLocalStorage(existingTodos); //LocalStore array with new value 
+    //LocalStore array with new value 
+    setTodosToLocalStorage(existingTodos);
 
-    refreshList();
+    //Refresh list
+    refreshTodoList();
 }
 
-/* Checks my locally stored todos against the ones that are in the HTML,
-everytime it's called, it actually replaces the HTML with the todos in localStorage */
-function refreshList(){
+
+/* 
+When refreshing, the list elements (HTML) are replaced with the content in localStorage.
+This way the HTML (output to user) will always stay up to date with what's been stored.
+*/
+function refreshTodoList(){
     
     var existingTodos = getLocallyStoredTodos();
 
-    /* The ul of todos is emptied, so it will not have any todos lying around just as HTML-elements, 
-    .. without having a counterpart locally stored */
+    //By setting the ul.innerHTML to "empty", all <li>:s will be removed
     incompleteList.innerHTML = '';
-    completeList.innerHTML = '';
+    completeList.innerHTML = ''; 
 
-    /* If you've gotten the duplicate-message before, this will remove it
-    when you successfully enter a new task */
+    /* If the user has gotten a message when the input was handled,
+    this will remove it when you successfully enter a new task */
     outputToUser.innerHTML = ''; 
-
     
     //Loops through the locally stored array
     for (var i = 0; i < existingTodos.length; i++){
@@ -76,13 +82,13 @@ function refreshList(){
         addToList(existingTodos[i].text, existingTodos[i].checked, existingTodos[i].id);
     }
 
+    //Empty the input-field after todo has been submitted
     todoInput.value = '';
-
 }
 
-function setTodoToLocalStorage(todoList){
+function setTodosToLocalStorage(todoList){
     
-    //Save the input (the array) as strings in localStorage
+    //Save the input (the array of todos) as strings in localStorage
     localStorage.setItem("todoList", JSON.stringify(todoList));
 }
 
@@ -91,26 +97,27 @@ function getLocallyStoredTodos(){
     //Fetch array from local storage
     var fetchedArray = localStorage.getItem("todoList");
 
+    //If there are no todos
     if (fetchedArray == null){
-        // Return empty array if there aren't any existing todos
+        //Define an empty array, otherwise the user won't be able to push anything into it
         return [];
 
     } else {
-        //Use parse to turn it back from string to regular array - and return it
+        //Turn array back from string to regular array - and return it
         return JSON.parse(fetchedArray); 
     }
 }
 
-//Changes status of todo when checkbox is marked
-function setStatus(){
+//Changes the checked-status of our locally stored todos
+function setStatusOfTodo(){
 
-    //Find the todo-id
+    //Find the todo-id that is changed in the DOM
     var id = this.parentElement.id;
 
     var todo; 
-    var existingTodos = getLocallyStoredTodos(); //Fetching our existing todos from localstorage
+    var existingTodos = getLocallyStoredTodos(); 
 
-    //For every existing todo - check if that id is the same as this.parentElement.id
+    //For every existing todo - check if that id is the same as the one that was changed
     for (var i = 0; i < existingTodos.length; i++){
         if(existingTodos[i].id == id){
             //Set that todo to the same existing todo
@@ -121,16 +128,15 @@ function setStatus(){
     //Sets the checked-sate of the todo when clicked/changed
     todo.checked = !todo.checked;
 
-    setTodoToLocalStorage(existingTodos); //LocalStore array with new value (for ex. checked = true)
+    setTodosToLocalStorage(existingTodos); //LocalStore array with new checked-values
 
-    refreshList(); 
+    refreshTodoList(); 
 
 }
 
-//Removes todo completely
-function removeTodo(){  
+function removeSingleTodo(){  
    
-    //Find the todo-id on wich we clicked the delete button
+    //Find the todo that was clicked (delete button)
     var id = this.parentElement.id;
 
     var existingTodos = getLocallyStoredTodos(); 
@@ -138,19 +144,18 @@ function removeTodo(){
     for (var i = 0; i < existingTodos.length; i++){
         if(existingTodos[i].id == id){
            
-           //If the id is the clicked one, splice the object on that index 
+           //If the id is the clicked one, splice the (one) object on that index 
            existingTodos.splice(i, 1)    
 
            //When our array of todos has been changed, store it again in localStorage 
-           setTodoToLocalStorage(existingTodos);
+           setTodosToLocalStorage(existingTodos);
 
-           refreshList(); //Refresh the locally stored todos and and them again to the html
+           refreshTodoList(); 
         }
-   }
-
+    }
 }
 
-//Clears our stored array of todos
+//Gives the user the option to clear all todos (remove them)
 function clearAll(){
     
     var existingTodos = getLocallyStoredTodos()
@@ -158,11 +163,11 @@ function clearAll(){
     //First check if there actually is something to delete
     if(existingTodos.length > 0){
         
-        var iamSure = confirm("Are you sure? This will delete everything. And I mean everything.");
+        var iAmSure = confirm("Are you sure? This will delete everything. And I mean everything.");
 
-        if(iamSure == true){
+        if(iAmSure == true){
             localStorage.clear();
-            refreshList();
+            refreshTodoList();
         } 
         
         else {
@@ -185,14 +190,13 @@ function duplicateExists(todo){
         
         //Check if the new todo is the (exact) same as the existing todo
         if(existingTodos[i].text == todo){
-            
             return true;
         }
     }
 }
 
 
-//Returns true if the user is trying to enter an "empty" task
+//Tells us if the user is trying to enter an "empty" task
 function checkifEmpty(input){
     
     if (input.trim() == ''){
@@ -206,7 +210,7 @@ function checkifEmpty(input){
 //Wraps input within HTML-element and adds actions
 function addToList(text,checked,id){
 
-    //I use a li-element to contain each todo + actions
+    //A li-element will contain each todo + actions
     var listElement = document.
        createElement('li');
 
@@ -215,21 +219,21 @@ function addToList(text,checked,id){
     checkbox.type = "checkbox";
     checkbox.id = "checkbox";
     checkbox.checked = checked;
-    checkbox.addEventListener('change', setStatus); 
+    checkbox.addEventListener('change', setStatusOfTodo); 
 
     const removeButton = document
         .createElement('input'); 
     removeButton.type = "submit";
     removeButton.value = "Delete";
-    removeButton.id = "removeButton";
-    removeButton.addEventListener('click', removeTodo); 
+    removeButton.id = "remove-button";
+    removeButton.addEventListener('click', removeSingleTodo); 
 
     listElement.innerHTML = '<p>' + text + '</p>'; //The user's input
     listElement.id = id;
     listElement.appendChild(checkbox); 
     listElement.appendChild(removeButton); 
     
-    //Add to either complete or incomplete-list depending on checkbox -state
+    //Add to either complete or incomplete-ul depending on checkbox-status
     if(checked == false){
         listElement.classList.add('incomplete-todo'); 
         incompleteList.appendChild(listElement);
