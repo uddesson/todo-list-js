@@ -11,17 +11,12 @@ p{
     font-size: 0.9em;
 }
 
-.hidden{
-    visibility: hidden;
-    display: none;
-}
-
 #todo-wrapper{
-    margin: 20px auto 0 auto;
+    margin: 50px auto 0 auto;
     border-radius: 5px;
     background-color: #fff;
     width: 80vw;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
 }
 
 #input-container{
@@ -40,7 +35,7 @@ input#todo{
     border-radius: 5px;
     text-indent: 10px;
     font-size: 0.8em;
-    color: #fff;
+    color: rgb(255, 254, 213);
     margin-bottom: 10px;
 }
 
@@ -65,7 +60,7 @@ input#todo{
 }
 
 input#add-button{
-    background-color: #ECF0F1;
+    background-color: #fff;
     height: 40px;
     width: 80px;
     border: 0px;
@@ -76,8 +71,13 @@ input#add-button{
 }
 
 input#add-button:hover{
-    background-color: rgb(158, 228, 224);
-    color: rgb(110, 157, 165);
+    background-color: #ECF0F1;
+    cursor: pointer;
+}
+
+.hidden{
+    visibility: hidden;
+    display: none;
 }
 
 #output-message-container{
@@ -143,8 +143,8 @@ input#add-button:hover{
     }
 
     #remove-button:hover{
-        background-color: rgb(223, 146, 110);
-        color: rgb(156, 93, 63);
+        background-color: #E26A6A;
+        color: rgb(163, 71, 71);
     }
 }
 
@@ -170,9 +170,9 @@ button#clear-button{
 }
 
 button#clear-button:hover{
-    background-color: rgb(223, 146, 110);
-    color: rgb(156, 93, 63);
-    border: 2px solid  rgb(223, 146, 110);
+    background-color: #E26A6A;
+    color: rgb(163, 71, 71);
+    border: #E26A6A;
 }
 
 #clearall-text{
