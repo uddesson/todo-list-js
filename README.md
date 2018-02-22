@@ -7,4 +7,4 @@ A simple web application for keeping track of stuff you need to do.
 * SASS
 
 
-- Emma Uddesson
+Emma Uddesson
