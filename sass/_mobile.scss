@@ -64,7 +64,7 @@ input#todo{
     color: #000;
 }
 
-input#button{
+input#add-button{
     background-color: #ECF0F1;
     height: 40px;
     width: 80px;
@@ -75,7 +75,7 @@ input#button{
     color: #8f8f8f;
 }
 
-input#button:hover{
+input#add-button:hover{
     background-color: rgb(158, 228, 224);
     color: rgb(110, 157, 165);
 }
@@ -128,7 +128,7 @@ input#button:hover{
                 order: 1;
     }
 
-    #removeButton{
+    #remove-button{
         -webkit-box-ordinal-group: 3;
             -ms-flex-order: 2;
                 order: 2;
@@ -142,7 +142,7 @@ input#button:hover{
         color: #b8b7b7;
     }
 
-    #removeButton:hover{
+    #remove-button:hover{
         background-color: rgb(223, 146, 110);
         color: rgb(156, 93, 63);
     }
@@ -175,7 +175,7 @@ button#clear-button:hover{
     border: 2px solid  rgb(223, 146, 110);
 }
 
-#clearall-note{
+#clearall-text{
     color: rgb(172, 172, 172);
     font-style: italic;
 }
