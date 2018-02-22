@@ -179,3 +179,19 @@ button#clear-button:hover{
     color: rgb(172, 172, 172);
     font-style: italic;
 }
+
+/* 
+Animation is applied in function removeSingleTodo() in main.js 
+The opacity is set to 0 before the animation reaches 100,
+to work better with the delayed refresh-function 
+*/
+@keyframes fadeout{
+    0% {opacity: 1;}
+    10% {opacity: 0.5;}
+    20% {opacity: 0;} 
+    100% {opacity: 0;}
+}
+
+.fade-out{
+    animation: fadeout 1s ease-in;
+}

@@ -150,7 +150,13 @@ function removeSingleTodo(){
            //When our array of todos has been changed, store it again in localStorage 
            setTodosToLocalStorage(existingTodos);
 
-           refreshTodoList(); 
+           /*I want the appearance of the todo fading away, so I use a css-animation
+           on the li-element */
+           this.parentElement.classList.add('fade-out'); 
+
+           //For the transition to be noticable, I delay the refresh-function
+           setTimeout(refreshTodoList, 200); 
+
         }
     }
 }
