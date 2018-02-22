@@ -11,18 +11,17 @@
 <body>
 
     <div id="todo-wrapper"> 
-        
         <div id="input-container">
             <h1>Stuff to do</h1>
             <form>
                 <label for="todo" class="hidden">Write your todo</label>
                 <input type="text" name="todo" id="todo" placeholder="Ex. Buy halloumi">
-                <label for="button" class="hidden">Add todo-button</label>
-                <input type="submit" id="button" value="Add me!"> 
+                <label for="add-button" class="hidden">Add todo-button</label>
+                <input type="submit" id="add-button" value="Add me!"> 
             </form>
 
             <div id="output-message-container">
-                <!-- Potential sucess or error message goes here -->
+                <!-- Potential error message goes here -->
             </div>
         </div>
 
@@ -42,7 +41,7 @@
 
         <div id="clear-action-container">
             <button id="clear-button">Clear List</button>
-            <p id="clearall-note">This will remove all of your tasks.</p>
+            <p id="clearall-text">This will remove all of your tasks.</p>
         </div>
         
     </div> <!--./todo-wrapper -->
