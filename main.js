@@ -181,6 +181,9 @@ function clearAll(){
     } 
     
     else {
+        var message = "You can't clear an empty list. Sorry!";
+        outputToUser.innerHTML = `<p id='message'> ${message} </p`;
+        
         return; //Don't ask the user anything
     }
 }
