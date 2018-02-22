@@ -59,8 +59,8 @@ function handleUserInput(event){
 
 
 /* 
-When refreshing, the list elements (HTML) are replaced with the content in localStorage.
-This way the HTML (output to user) will always stay up to date with what's been stored.
+When refreshing, HTML-objects are emptied and filled with the content in localStorage.
+This way the HTML (output to user) will always stay up to date with localStorage
 */
 function refreshTodoList(){
     
@@ -77,8 +77,7 @@ function refreshTodoList(){
     //Loops through the locally stored array
     for (var i = 0; i < existingTodos.length; i++){
 
-        /*Sends our todo-objects along with it's values into to the addToList-function,
-        Which will put them into HTML-elements and append them to the ul*/
+        //Sends our new todo along with it's values into to the addToList-function
         addToList(existingTodos[i].text, existingTodos[i].checked, existingTodos[i].id);
     }
 
@@ -141,13 +140,13 @@ function removeSingleTodo(){
 
     var existingTodos = getLocallyStoredTodos(); 
 
+    //For every existing todo - check if that id is the same as the one that was clicked
     for (var i = 0; i < existingTodos.length; i++){
         if(existingTodos[i].id == id){
-           
+
            //If the id is the clicked one, splice the (one) object on that index 
            existingTodos.splice(i, 1)    
-
-           //When our array of todos has been changed, store it again in localStorage 
+            
            setTodosToLocalStorage(existingTodos);
 
            /*I want the appearance of the todo fading away, so I use a css-animation
