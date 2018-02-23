@@ -1,6 +1,6 @@
 # Todo
 
-A simple web application for keeping track of stuff you need to do. By Emma Uddesson.
+A simple web application for keeping track of stuff you need to do. 
 
 ### Built With
 
